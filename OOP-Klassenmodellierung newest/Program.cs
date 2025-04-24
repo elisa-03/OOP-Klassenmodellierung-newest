@@ -2,6 +2,7 @@
 
 namespace OOP_Klassenmodellierung_newest
 {
+    //Test etwas zu commiten ... halloo
     internal class Postamt
     {
         public int Kapazität { get; private set; }
