@@ -54,6 +54,7 @@ namespace OOP_Klassenmodellierung_newest
         {
             for(int i=0; i<postfächerDesAmtes.Length; i++)
             {
+                if (postfächerDesAmtes[i] != null)
                 postfächerDesAmtes[i].PostfachVoll = true;
 
             }
@@ -77,6 +78,7 @@ namespace OOP_Klassenmodellierung_newest
             Postfachnummer = postfachnummer++;
             Firma = firma;
             Postamt = posti;
+            PostfachVoll = false;
             
 
         }
@@ -149,11 +151,16 @@ namespace OOP_Klassenmodellierung_newest
             int postfächerGeleert = 0;
             for(int i=0; i<gemietetePostfächer.Length; i++)
             {
+                if (gemietetePostfächer[i] != null)
+                {
                 if (gemietetePostfächer[i].PostfachVoll==true)
                 {
                     gemietetePostfächer[i].PostfachVoll = false;
                     postfächerGeleert++;
                 }
+
+                }
+
             }
             Console.WriteLine($"Die Firma {this.Name} hat {postfächerGeleert} Postfächer geleert.");
 
@@ -186,7 +193,7 @@ namespace OOP_Klassenmodellierung_newest
         {
             for (int i=0; i<Bereich.postfächerDesAmtes.Length;i++)  //leert alle Postfächer seines zugeteilten Amtes (Eigenschaft des Briefträgers!)
             {
-                if (Bereich.postfächerDesAmtes[i].PostfachVoll == true)
+                if (Bereich.postfächerDesAmtes[i]?.PostfachVoll == true)
                 {
                     Bereich.postfächerDesAmtes[i].PostfachVoll = false;
                     
@@ -216,7 +223,10 @@ namespace OOP_Klassenmodellierung_newest
         {
             Postamt nürnberg = new("Postamt Nürnberg", "Hbf", 10);
             Firma lego = new("LEGO", "Hamburg");
+            Briefträger max = new("Maxi Müller", nürnberg);
             lego.PostfachAnmieten(nürnberg);    // bsp: firma lego will beim postamt nürnberg ein postfach anmieten
+            nürnberg.PostfächerBefüllen();
+            lego.PostfachLeeren();
         }
             
     }
