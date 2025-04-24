@@ -2,7 +2,7 @@
 
 namespace OOP_Klassenmodellierung_newest
 {
-    //Test etwas zu commiten ... halloo
+    
     internal class Postamt
     {
         public int Kapazität { get; private set; }
@@ -50,7 +50,7 @@ namespace OOP_Klassenmodellierung_newest
             }
             return false;
         }
-        public void PostfächerBefüllen()    //alle postfächer eines Amtes werden befüllt (Keine optimale Lösung!)
+        public void PostfächerBefüllen()    //alle postfächer eines Amtes werden befüllt (Keine optimale Lösung!) ändert Tanja noch ab
         {
             for(int i=0; i<postfächerDesAmtes.Length; i++)
             {
@@ -80,7 +80,7 @@ namespace OOP_Klassenmodellierung_newest
             
 
         }
-        public override string ToString()
+        public override string ToString()   // vlt kann man hier was anderes ausgeben, unsicher was an einem postfach aber interessant sein könnte
         {
             return $"Es gibt {postfachnummer} Postfächer, davon sind {zähler} Postfächer vermietet.";
             
@@ -98,11 +98,11 @@ namespace OOP_Klassenmodellierung_newest
         {
             Name = name;
             Adress = adress;
-            gemietetePostfächer = new Postfach[10]; //statisch festgelegt, dass keine Firma mehr als 10 Postfächer haben darf,
+            gemietetePostfächer = new Postfach[10]; //nicht wirklich optimal, mir fällt keine Lösung für dynamisch großes Array hier ein (vlt. ist auch gar kein array nötig?)
                                                     //mir fällt keine bessere Methode ein...mit variabel großen arrays funktionierts nicht
         }
         
-        public bool PostfachAnmieten(Postamt amt)   // es besteht die Möglichkeit, bei verschiedenen Postämtern Postfächer zu mieten
+        public bool PostfachAnmieten(Postamt amt)   //Möglichkeit, dass Firmen bei verschiedenen Postämtern Postfächer mieten können
         {
 
             for (int i=0; i<gemietetePostfächer.Length;i++)
@@ -110,8 +110,7 @@ namespace OOP_Klassenmodellierung_newest
                 if (gemietetePostfächer[i] == null)
                 {
                     Postfach neues = amt.Mieten(this);  // Mieten geht nur übers Postamt, deswegen entsprechender Aufruf.
-                    if (neues!=null)                    // Prüfen ob übergebenes postfach eines ist, da so implementiert
-                                                        // dass bei nicht erfolg postfach mieten im Amt null zurückgegeben wird
+                    if (neues!=null)                    // Prüfen ob übergebenes postfach eines ist, da so implementiert, dass bei nicht erfolg postfach mieten in Klasse Postamt null zurückgegeben wird
                     {
                         gemietetePostfächer[i] = neues;
                         anzahlPostfächer++;
@@ -141,7 +140,7 @@ namespace OOP_Klassenmodellierung_newest
             return false;
         }
 
-        public void PostfachLeeren()
+        public void PostfachLeeren()    // wird wahrscheinlich auch noch von Tanja überarbeitet
         {
             // deine Implementierung von Briefen
             // Zugriff aufs Postfach über gemietetePostfächer, da ja alle geleert werden sollen 
