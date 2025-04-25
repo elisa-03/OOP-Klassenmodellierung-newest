@@ -40,13 +40,20 @@ namespace OOP_Klassenmodellierung_newest
         {
             for (int i=0; i<postfächerDesAmtes.Length;i++)
             {
-                if (postfächerDesAmtes[i].Firma==firma)
+                if (postfächerDesAmtes[i] != null && postfächerDesAmtes[i].Firma == firma)
                 {
-                    
-                    postfächerDesAmtes[i].Firma = null;
-                    return true;
+                    if (postfächerDesAmtes[i].Firma==firma)
+                    {
+                            postfächerDesAmtes[i].Firma = null;
+                            return true;
 
+                    }
+                    
                 }
+
+                
+
+                
             }
             return false;
         }
@@ -82,11 +89,12 @@ namespace OOP_Klassenmodellierung_newest
             
 
         }
-        public override string ToString()   // vlt kann man hier was anderes ausgeben, unsicher was an einem postfach aber interessant sein könnte
+        
+        public override string ToString()
         {
-            return $"Es gibt {postfachnummer} Postfächer, davon sind {zähler} Postfächer vermietet.";
-            
+            return $"Postfach {Postfachnummer} {(PostfachVoll ? "ist voll" : "ist leer")} und gehört {(Firma != null ? Firma.Name : "niemandem")}.";
         }
+
 
     }
     internal class Firma
